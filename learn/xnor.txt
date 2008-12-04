@@ -5,7 +5,7 @@
 0.2 #learning rate
 2000 #number of iterations
 4 #number of data thingys
-0 0 0
-1 0 1
-0 1 1
-1 1 0
+0 0 1
+1 0 0
+0 1 0
+1 1 1

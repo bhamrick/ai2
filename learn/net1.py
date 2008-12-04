@@ -1,6 +1,7 @@
 import neuron, math, time, sys, random
 
 interactive = False
+mu = 0.1
 
 if len(sys.argv) < 2:
 	print 'YOU FAIL'
@@ -81,10 +82,12 @@ if not interactive:
 				for n in range(nhnodes[l]):
 					if l == 0:
 						for j in range(inputs):
-							layers[l][n].w[j]-=lrate*data[i][0][j]*layers[l][n].d
+							layers[l][n].pdelta=mu*layers[l][n].pdelta - (1-mu)*lrate*data[i][0][j]*layers[l][n].d
+							layers[l][n].w[j]+=layers[l][n].pdelta
 					else:
 						for j in range(nhnodes[l-1]):
-							layers[l][n].w[j]-=lrate*layers[l-1][j].val*layers[l][n].d
+							layers[l][n].pdelta=mu*layers[l][n].pdelta - (1-mu)*lrate*layers[l-1][j].val*layers[l][n].d
+							layers[l][n].w[j]+=layers[l][n].pdelta
 	end = time.time()
 	sys.stdout.write('Done in %f seconds!\n\n' % (float(end)-float(start)))
 	sys.stdout.flush()
@@ -142,10 +145,12 @@ else:
 				for n in range(nhnodes[l]):
 					if l == 0:
 						for j in range(inputs):
-							layers[l][n].w[j]-=lrate*data[i][0][j]*layers[l][n].d
+							layers[l][n].pdelta=mu*layers[l][n].pdelta - (1-mu)*lrate*data[i][0][j]*layers[l][n].d
+							layers[l][n].w[j]+=layers[l][n].pdelta
 					else:
 						for j in range(nhnodes[l-1]):
-							layers[l][n].w[j]-=lrate*layers[l-1][j].val*layers[l][n].d
+							layers[l][n].pdelta=mu*layers[l][n].pdelta - (1-mu)*lrate*layers[l-1][j].val*layers[l][n].d
+							layers[l][n].w[j]+=layers[l][n].pdelta
 		except KeyboardInterrupt:
 			sys.exit(0)
 		except:
