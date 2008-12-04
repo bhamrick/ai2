@@ -1,0 +1,23 @@
+4 #inputs
+2 #outputs
+1 #hidden layers
+11 #number of nodes in hidden layer 1
+0.2 #learning rate
+2000 #number of iterations
+16 #number of data thingys
+0 0 0 0 0 0
+0 0 0 1 0 1
+0 0 1 0 1 0
+0 0 1 1 1 1
+0 1 0 0 0 1
+0 1 0 1 1 0
+0 1 1 0 1 1
+0 1 1 1 0 0
+1 0 0 0 1 0
+1 0 0 1 1 1
+1 0 1 0 0 0
+1 0 1 1 0 1
+1 1 0 0 1 1
+1 1 0 1 0 0
+1 1 1 0 0 1
+1 1 1 1 1 0
